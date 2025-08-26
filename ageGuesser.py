@@ -3,15 +3,17 @@ import random
 def main():
 	print("Hello, I am going to guess your age!")
 	name = input("What is your name? ")
-	ages = []
+	guess = 50
+	step = 25
 	while True:
-		guess = random.randint(15, 30)
-		while guess in ages:
-			guess = random.randint(15, 30)
-		if input(f"Is your age {guess}? Y/N ") == "Y":
+		userInput = input(f"Is your age {guess}? y/higher/lower ")
+		if userInput == "y":
 			print(f"Your name is {name} and you are {guess} years old.")
 			return
-		else:
-			print("Rats.")
-			ages.append(guess)
+		elif userInput == "higher":
+			guess += step
+		elif userInput == "lower":
+			guess -= step
+		print("Rats.")
+		step = step // 2
 main()
